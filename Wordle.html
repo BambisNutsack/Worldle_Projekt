@@ -19,13 +19,13 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <h1 class="bg-dark text-light text-center">Leiste - infos/optionen/statistiken</h1>
+    <div class="container-fluid p-0">
+        <h1 class="bg-dark text-light text-center">Leiste - Theme/Kategorien/Info-Seite</h1>
         <div class="row justify-content-center align-items-center p-1">
-            <img name="canvas" class="img-center" style="width: 300px; height: 300px;" />
+            <img name="canvas" style="width: 300px; height: 300px;" />
         </div>
         <div class="row justify-content-center align-items-center p-1">
-            <table class="border table-bordered border-dark" style="width:300px">
+            <table class="table-bordered border-dark" style="width:300px">
                 <tr>
                     <td>&nbsp;</td>
                 </tr>
@@ -47,10 +47,10 @@
             </table>
         </div>
         <div class="row justify-content-center align-items-center p-1">
-            <input class="form-control border-dark" list="Länder" id="exampleDataList" placeholder="Ländername" style="width: 300px">
+            <input class="form-control border-dark" list="Länder" id="Länderliste" placeholder="Ländername" style="width: 300px">
         </div>
         <div class="row justify-content-center align-items-center p-1">
-            <button onclick="LandAuswahl();" class="mx-auto btn-center" style="width:300px">Zufälliges Land</button>
+            <button onclick="LandAuswahl();" style="width:300px">Zufälliges Land</button>
         </div>
         <datalist id="Länder">
             <option value="Andorra">
@@ -71,7 +71,6 @@
             <option value="Aserbaidschan">
         </datalist>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
     </div>
 </body>
 
