@@ -278,7 +278,7 @@ const Länder = [{
 
 // svg array
 const imgArr = Länder.map(({ code: actualValue }) => actualValue);
-// laden der funktionen
+// laden der funktionen 
 window.onload = Autocomplete(), LandAuswahl()
 
 
