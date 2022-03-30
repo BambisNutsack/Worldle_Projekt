@@ -1,4 +1,4 @@
-// Countries images => https://github.com/djaiss/mapsicon
+// images => https://github.com/djaiss/mapsicon
 const Länder = [{
         code: "al.svg",
         latitude: 41.153332,
@@ -275,10 +275,15 @@ const Länder = [{
     }
 ];
 
+
+// svg array
 const imgArr = Länder.map(({ code: actualValue }) => actualValue);
+// laden der funktionen
 window.onload = Autocomplete(), LandAuswahl()
 
-// Erstellen der Datenlisten optionen
+
+
+// datenlisten optionen     --------------------------------------
 function Autocomplete() {
     var dataList = document.getElementById("LänderListe");
     var input = document.getElementById("LänderEingabe");
@@ -289,19 +294,24 @@ function Autocomplete() {
     }
 }
 
-// Länderauswahl    -------------------------------
+
+
+// länderauswahl        -------------------------------
 function LandAuswahl() {
     var num = Math.floor(Math.random() * (imgArr.length));
     document.canvas.src = "img/" + imgArr[num];
 }
 
-// Theme    --------------------------------------
-const chk = document.getElementById("chk");
 
-chk.addEventListener("change", () => {
-    document.body.classList.toggle("dark");
-});
 
+
+
+
+
+
+
+
+// // koordinaten funktion für entfernung - ignorieren
 // function distance(lat1,
 //     lat2, lon1, lon2)
 // {

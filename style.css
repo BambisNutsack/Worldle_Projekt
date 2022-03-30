@@ -42,10 +42,6 @@ h1 {
     position: absolute;
 }
 
-.checkbox:checked+.label .ball {
-    transform: translateX(24px);
-}
-
 .label {
     display: inline-block;
     color: white;

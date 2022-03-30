@@ -19,44 +19,53 @@
                 <label class="label" for="chk">
                     <i class="bi bi-brightness-high-fill"></i>
                 </label>
-                <i class="bi bi-info-circle"></i>
+                <i onclick="InfopageToggle();" class="bbi bi-info-circle"></i>
             </h1>
         </div>
-        <div class="Hauptseite">
-            <div class="Land">
-                <img name="canvas" style="width: 300px; height: 300px;" />
-            </div>
-            <div class="Versuche">
-                <table class="table-bordered border-dark" style="width:300px;">
-                    <tr>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="Autofill">
-                <input id="LänderEingabe" list="LänderListe" placeholder="Test" style="width: 300px; height: 30px;">
-                <datalist id="LänderListe">
+        <section id="Mainpage" style="position:absolute; top:50px; left:0; width:100%; height:100%; visibility:visible">
+            <div class="Hauptseite">
+                <div class="Land">
+                    <img name="canvas" style="width: 300px; height: 300px;" />
+                </div>
+                <div class="Versuche">
+                    <table class="table-bordered border-dark" style="width:300px;">
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="Autofill">
+                    <input id="LänderEingabe" list="LänderListe" placeholder="Test" style="width: 300px; height: 30px;">
+                    <datalist id="LänderListe">
                 </datalist>
-            </div>
-            <div class="WeiterButton">
-                <button onclick="LandAuswahl();" style="width:300px; height: 30px;">Zufälliges   Land</button>
-            </div>
-            <script src="Länder.js"></script>
+                </div>
+                <div class="WeiterButton">
+                    <button onclick="LandAuswahl();" style="width:300px; height: 30px;">Zufälliges   Land</button>
+                </div>
+        </section>
+        <section id="Infopage" style="position:absolute; top:100px; left:0; width:100%; height:100%; visibility:hidden">
+            <p>Errate das Land in 6 Anläufen.
+                <br> Jeder Tipp muss ein gültiges Land, Gebiet, ... sein.
+                <br> Nach jedem Tipp erhalten Sie die Entfernung zwischen Ihrem Tipp und dem Zielland.
+            </p>
+        </section>
+        <script src="main.js"></script>
+        <script src="Länder.js"></script>
 </body>
 
 </html>
