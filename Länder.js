@@ -1,3 +1,4 @@
+// Countries images => https://github.com/djaiss/mapsicon
 const Länder = [{
         code: "al.svg",
         latitude: 41.153332,
