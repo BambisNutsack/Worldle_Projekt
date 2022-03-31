@@ -10,7 +10,7 @@ chk.addEventListener("change", () => {
 function InfopageToggle() {
     var Info = document.getElementById("Infopage");
     var Main = document.getElementById("Mainpage");
-    if (Info.style.visibility = "hidden") {
+    if (Info.style.visibility == "hidden") {
         Info.style.visibility = "visible";
         Main.style.visibility = "hidden";
     } else {
