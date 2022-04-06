@@ -16,8 +16,8 @@
             <i class="bi bi-list"></i>
             <input type="checkbox" class="checkbox" id="chk" />
             <label class="label" for="chk">
-                    <i class="bi bi-brightness-high-fill"></i>
-                </label>
+                <i class="bi bi-brightness-high-fill"></i>
+            </label>
             <i onclick="InfopageToggle();" class="bbi bi-info-circle"></i>
         </h1>
         <section id="Mainpage" style="position:absolute; top:50px; left:0; width:100%; height:100%; visibility:visible">
@@ -26,25 +26,7 @@
                     <img name="canvas" style="width: 300px; height: 300px;" />
                 </div>
                 <div class="Versuche">
-                    <table class="table-bordered border-dark" style="width:300px;">
-                        <tr>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                        </tr>
+                    <table id="VersucheTabelle" style="width:300px;">
                     </table>
                 </div>
                 <div class="Autofill">
@@ -55,15 +37,17 @@
                 <div class="WeiterButton">
                     <button onclick="LandAuswahl();" style="width:300px; height: 30px;">Zufälliges   Land</button>
                 </div>
+            </div>
         </section>
         <section id="Infopage" style="position:absolute; top:100px; left:0; width:100%; height:100%; visibility:hidden">
             <p>Errate das Land in 6 Anläufen.
                 <br> Jeder Versuch muss ein gültiges Land, Gebiet, ... sein.
                 <br> Nach jedem Versuch erhalten Sie die Entfernung zwischen Ihrem Tipp und dem Zielland.
+                <br> credit für die Bilder: https://github.com/djaiss/mapsicon
             </p>
         </section>
-        <script src="main.js"></script>
         <script src="Länder.js"></script>
+        <script src="main.js"></script>
 </body>
 
 </html>
