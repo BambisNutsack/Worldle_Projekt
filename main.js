@@ -75,7 +75,7 @@ LänderEingabe.addEventListener("keydown", (e) => {
             Erraten = true
         } else {
             alert("falsch es ist " + Länder[num].name)
-                // row.cell[i].style.backgroundColor = "red";
+                // tabelle.rows[Länge].style.backgroundColor = "red";
         }
     }
 });
