@@ -53,6 +53,7 @@ function LandAuswahl() {
         Länge = Länge - 1
         document.getElementById("VersucheTabelle").deleteRow(Länge);
     }
+    Erraten = false
 }
 
 
@@ -60,18 +61,21 @@ function LandAuswahl() {
 // Einfügen der Länder in den Table
 const LänderEingabe = document.getElementById("LänderEingabe");
 var Länge = 0
+var Erraten = false
 LänderEingabe.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" && Länge < 6) {
+    if (e.key === "Enter" && Länge < 6 && Erraten == false) {
         var tabelle = document.getElementById("VersucheTabelle");
         var row = tabelle.insertRow();
         var cell = row.insertCell();
         var Versuch = document.getElementById("LänderEingabe")
         cell.innerHTML = Versuch.value
         Länge = tabelle.rows.length
-        if (Versuch == Länder[num].name) {
+        if (Versuch.value == Länder[num].name) {
             alert("richtig es ist " + Länder[num].name)
+            Erraten = true
         } else {
             alert("falsch es ist " + Länder[num].name)
+                // row.cell[i].style.backgroundColor = "red";
         }
     }
 });
