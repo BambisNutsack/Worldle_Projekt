@@ -88,3 +88,11 @@ td {
 .WeiterButton {
     border-color: #111;
 }
+
+.red {
+    background-color: rgb(229, 124, 120);
+}
+
+.green {
+    background-color: green;
+}

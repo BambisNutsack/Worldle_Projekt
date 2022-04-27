@@ -93,7 +93,7 @@ const Länder = [{
         code: "kz",
         latitude: 48.019573,
         longitude: 66.923684,
-        name: "Kasachstan",
+        name: "Kazakhstan",
     },
     {
         code: "hr",

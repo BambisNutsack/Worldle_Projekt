@@ -37,7 +37,7 @@ function Autocomplete() {
     input.placeholder = "Ländername";
     for (var i = 0; i < Länder.length; i++) {
         dataList.innerHTML = dataList.innerHTML +
-            "<option value=" + Länder[i].name + "></option>";
+            "<option value='" + Länder[i].name + "'></option>";
     }
 }
 
@@ -45,6 +45,7 @@ function Autocomplete() {
 
 // länderauswahl        -------------------------------
 var num
+var WeiterButton = document.getElementById("WeiterButton")
 
 function LandAuswahl() {
     num = Math.floor(Math.random() * (imgArr.length));
@@ -54,6 +55,8 @@ function LandAuswahl() {
         document.getElementById("VersucheTabelle").deleteRow(Länge);
     }
     Erraten = false
+    if (WeiterButton) WeiterButton.style.visibility = "hidden"
+    if (VersuchButton) VersuchButton.style.visibility = "visible"
 }
 
 
@@ -62,8 +65,10 @@ function LandAuswahl() {
 const LänderEingabe = document.getElementById("LänderEingabe");
 var Länge = 0
 var Erraten = false
-LänderEingabe.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" && Länge < 6 && Erraten == false) {
+var VersuchButton = document.getElementById("VersuchButton")
+
+function TabellenErstellung() {
+    if (Länge < 6 && Erraten == false && NameArr.includes(LänderEingabe.value)) {
         var tabelle = document.getElementById("VersucheTabelle");
         var row = tabelle.insertRow();
         var cell = row.insertCell();
@@ -71,11 +76,13 @@ LänderEingabe.addEventListener("keydown", (e) => {
         cell.innerHTML = Versuch.value
         Länge = tabelle.rows.length
         if (Versuch.value == Länder[num].name) {
-            alert("richtig es ist " + Länder[num].name)
             Erraten = true
+            row.classList.add("green");
         } else {
-            alert("falsch es ist " + Länder[num].name)
-                // tabelle.rows[Länge].style.backgroundColor = "red";
+            row.classList.add("red");
         }
+        WeiterButton.style.visibility = ((Erraten == true || Länge == 6) ? "visible" : "hidden");
+        VersuchButton.style.visibility = ((Erraten == true || Länge == 6) ? "hidden" : "visible");
+        LänderEingabe.value = ""
     }
-});
+};
