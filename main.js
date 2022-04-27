@@ -46,6 +46,7 @@ function Autocomplete() {
 // länderauswahl        -------------------------------
 var num
 var WeiterButton = document.getElementById("WeiterButton")
+var LänderEingabe = document.getElementById("LänderEingabe");
 
 function LandAuswahl() {
     num = Math.floor(Math.random() * (imgArr.length));
@@ -57,12 +58,12 @@ function LandAuswahl() {
     Erraten = false
     if (WeiterButton) WeiterButton.style.visibility = "hidden"
     if (VersuchButton) VersuchButton.style.visibility = "visible"
+    if (LänderEingabe) LänderEingabe.style.visibility = "visible"
 }
 
 
 
 // einfügen der eänder in den table
-var LänderEingabe = document.getElementById("LänderEingabe");
 var Länge = 0
 var Erraten = false
 var VersuchButton = document.getElementById("VersuchButton")
@@ -83,6 +84,7 @@ function TabellenErstellung() {
         }
         WeiterButton.style.visibility = ((Erraten == true || Länge == 6) ? "visible" : "hidden");
         VersuchButton.style.visibility = ((Erraten == true || Länge == 6) ? "hidden" : "visible");
+        LänderEingabe.style.visibility = ((Erraten == true || Länge == 6) ? "hidden" : "visible")
         LänderEingabe.value = ""
     }
 };
