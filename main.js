@@ -61,7 +61,7 @@ function LandAuswahl() {
 
 
 
-// Einfügen der Länder in den Table
+// einfügen der eänder in den table
 const LänderEingabe = document.getElementById("LänderEingabe");
 var Länge = 0
 var Erraten = false
@@ -86,3 +86,11 @@ function TabellenErstellung() {
         LänderEingabe.value = ""
     }
 };
+
+
+
+//verhindert neuladen der seite bei eingabe
+var form = document.getElementById("Versuchseingabe");
+
+function handleForm(e) { e.preventDefault(); }
+form.addEventListener('submit', handleForm);
