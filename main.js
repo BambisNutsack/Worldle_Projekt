@@ -62,7 +62,7 @@ function LandAuswahl() {
 
 
 // einfügen der eänder in den table
-const LänderEingabe = document.getElementById("LänderEingabe");
+var LänderEingabe = document.getElementById("LänderEingabe");
 var Länge = 0
 var Erraten = false
 var VersuchButton = document.getElementById("VersuchButton")
@@ -89,8 +89,14 @@ function TabellenErstellung() {
 
 
 
-//verhindert neuladen der seite bei eingabe
+// verhindert neuladen der seite bei eingabe
 var form = document.getElementById("Versuchseingabe");
 
 function handleForm(e) { e.preventDefault(); }
-form.addEventListener('submit', handleForm);
+form.addEventListener("submit", handleForm);
+
+
+// leert die ländereingabe
+function EingabeLeeren() {
+    LänderEingabe.value = ""
+}

@@ -90,9 +90,9 @@ td {
 }
 
 .red {
-    background-color: rgb(229, 124, 120);
+    background-color: rgb(255, 120, 120);
 }
 
 .green {
-    background-color: green;
+    background-color: rgb(120, 255, 120);
 }
