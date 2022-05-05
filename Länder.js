@@ -168,9 +168,9 @@ const Länder = [{
         name: "Norwegen",
     },
     {
-        code: "au",
-        latitude: -25.274398,
-        longitude: 133.775136,
+        code: "at",
+        latitude: 47.516231,
+        longitude: 14.550072,
         name: "Österreich",
     },
     {
