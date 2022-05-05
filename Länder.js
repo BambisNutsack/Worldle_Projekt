@@ -13,7 +13,7 @@ const Länder = [{
     },
     {
         code: "by",
-        latitude: 53.709807,
+        latitude: "53.709807",
         longitude: 27.953389,
         name: "Weißrussland",
     },

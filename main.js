@@ -76,19 +76,35 @@ function TabellenErstellung() {
         var Versuch = document.getElementById("LänderEingabe")
         cell.innerHTML = Versuch.value
         Länge = tabelle.rows.length
+
         if (Versuch.value == Länder[num].name) {
             Erraten = true
             row.classList.add("green");
         } else {
             row.classList.add("red");
         }
+
         WeiterButton.style.visibility = ((Erraten == true || Länge == 6) ? "visible" : "hidden");
         VersuchButton.style.visibility = ((Erraten == true || Länge == 6) ? "hidden" : "visible");
         LänderEingabe.style.visibility = ((Erraten == true || Länge == 6) ? "hidden" : "visible")
         LänderEingabe.value = ""
+
+        // alert(item)
     }
 };
 
+
+
+// // test zum auslesen der koordinaten
+// var item = KoordinatenTest(LänderEingabe.value);
+
+// function KoordinatenTest(a) {
+//     for (var i = 0; i < Länder.length; i++) {
+//         if (Länder[i].name === a) {
+//             return (Länder[i].latitude);
+//         }
+//     }
+// }
 
 
 // verhindert neuladen der seite bei eingabe
@@ -102,3 +118,42 @@ form.addEventListener("submit", handleForm);
 function EingabeLeeren() {
     LänderEingabe.value = ""
 }
+
+
+// // // koordinaten funktion für entfernung - ignorieren
+// function distance(lat1,
+//     lat2, lon1, lon2) {
+
+//     // The math module contains a function
+//     // named toRadians which converts from
+//     // degrees to radians.
+//     lon1 = lon1 * Math.PI / 180;
+//     lon2 = lon2 * Math.PI / 180;
+//     lat1 = lat1 * Math.PI / 180;
+//     lat2 = lat2 * Math.PI / 180;
+
+//     // Haversine formula
+//     let dlon = lon2 - lon1;
+//     let dlat = lat2 - lat1;
+//     let a = Math.pow(Math.sin(dlat / 2), 2) +
+//         Math.cos(lat1) * Math.cos(lat2) *
+//         Math.pow(Math.sin(dlon / 2), 2);
+
+//     let c = 2 * Math.asin(Math.sqrt(a));
+
+//     // Radius of earth in kilometers. Use 3956
+//     // for miles
+//     let r = 6371;
+
+//     // calculate the result
+//     return (c * r);
+// }
+
+// // Driver code   
+
+// let lat1 = 53.32055555555556;
+// let lat2 = 53.31861111111111;
+// let lon1 = -1.7297222222222221;
+// let lon2 = -1.6997222222222223;
+// document.write(distance(lat1, lat2,
+//     lon1, lon2) + " K.M");
