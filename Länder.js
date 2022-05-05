@@ -13,7 +13,7 @@ const Länder = [{
     },
     {
         code: "by",
-        latitude: "53.709807",
+        latitude: 53.709807,
         longitude: 27.953389,
         name: "Weißrussland",
     },
@@ -277,7 +277,43 @@ const Länder = [{
 
 
 
-
+const Richtungspfeile = [{
+        Himmelsrichtung: "N",
+        Pfeil: "🡹"
+    },
+    {
+        Himmelsrichtung: "NO",
+        Pfeil: "🡽"
+    },
+    {
+        Himmelsrichtung: "NW",
+        Pfeil: "🡼"
+    },
+    {
+        Himmelsrichtung: "S",
+        Pfeil: "🡻"
+    },
+    {
+        Himmelsrichtung: "SO",
+        Pfeil: "🡾"
+    },
+    {
+        Himmelsrichtung: "SW",
+        Pfeil: "🡿"
+    },
+    {
+        Himmelsrichtung: "O",
+        Pfeil: "🡺"
+    },
+    {
+        Himmelsrichtung: "W",
+        Pfeil: "🡸"
+    },
+    {
+        Himmelsrichtung: "",
+        Pfeil: "🎉"
+    }
+];
 
 
 

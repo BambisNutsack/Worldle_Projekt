@@ -25,6 +25,8 @@ for (var i = 0; i < Länder.length; i++) {
     NameArr[i] = Länder[i].name
 }
 
+
+
 // laden der funktionen 
 window.onload = Autocomplete(), LandAuswahl()
 
@@ -67,44 +69,94 @@ function LandAuswahl() {
 var Länge = 0
 var Erraten = false
 var VersuchButton = document.getElementById("VersuchButton")
+var N
+var S
+var O
+var W
+var NS
+var OW
 
 function TabellenErstellung() {
     if (Länge < 6 && Erraten == false && NameArr.includes(LänderEingabe.value)) {
         var tabelle = document.getElementById("VersucheTabelle");
         var row = tabelle.insertRow();
         var cell = row.insertCell();
-        var Versuch = document.getElementById("LänderEingabe")
-        cell.innerHTML = Versuch.value
-        Länge = tabelle.rows.length
+        var Versuch = document.getElementById("LänderEingabe");
+        cell.innerHTML = Versuch.value;
+        Länge = tabelle.rows.length;
+
 
         if (Versuch.value == Länder[num].name) {
-            Erraten = true
+            Erraten = true;
             row.classList.add("green");
         } else {
             row.classList.add("red");
         }
 
+
+        cell = row.insertCell();
+        cell.innerHTML = ((distance().toFixed(2) > 0) ? distance().toFixed(2) + " km" : "🎉");
+
+
+        cell = row.insertCell();
+        cell.innerHTML = Test()
+
+
         WeiterButton.style.visibility = ((Erraten == true || Länge == 6) ? "visible" : "hidden");
         VersuchButton.style.visibility = ((Erraten == true || Länge == 6) ? "hidden" : "visible");
-        LänderEingabe.style.visibility = ((Erraten == true || Länge == 6) ? "hidden" : "visible")
-        LänderEingabe.value = ""
+        LänderEingabe.style.visibility = ((Erraten == true || Länge == 6) ? "hidden" : "visible");
+        LänderEingabe.value = "";
 
-        // alert(item)
     }
 };
 
 
+function Test() {
+    lat1 = Länder[num].latitude;
+    lon1 = Länder[num].longitude;
+    lat2 = LatEingabe(LänderEingabe.value);
+    lon2 = LonEingabe(LänderEingabe.value);
+    NS = lat1 - lat2
+    OW = lon1 - lon2
 
-// // test zum auslesen der koordinaten
-// var item = KoordinatenTest(LänderEingabe.value);
 
-// function KoordinatenTest(a) {
-//     for (var i = 0; i < Länder.length; i++) {
-//         if (Länder[i].name === a) {
-//             return (Länder[i].latitude);
-//         }
-//     }
-// }
+    N = ((lat1 > lat2 && NS > 1.5) ? "N" : "");
+    S = ((lat1 < lat2 && NS < -1.5) ? "S" : "");
+    O = ((lon1 > lon2 && OW > 1.5) ? "O" : "");
+    W = ((lon1 < lon2 && OW < -1.5) ? "W" : "");
+    Richtung = N + S + O + W
+
+
+    for (var i = 0; i < Richtungspfeile.length; i++) {
+        if (Richtungspfeile[i].Himmelsrichtung === Richtung) {
+            Richtung = (Richtungspfeile[i].Pfeil);
+        }
+    }
+
+    return Richtung
+}
+
+
+
+
+
+
+// test zum auslesen der koordinaten
+function LatEingabe(a) {
+    for (var i = 0; i < Länder.length; i++) {
+        if (Länder[i].name === a) {
+            return (Länder[i].latitude);
+        }
+    }
+}
+
+function LonEingabe(a) {
+    for (var i = 0; i < Länder.length; i++) {
+        if (Länder[i].name === a) {
+            return (Länder[i].longitude);
+        }
+    }
+}
 
 
 // verhindert neuladen der seite bei eingabe
@@ -120,40 +172,32 @@ function EingabeLeeren() {
 }
 
 
-// // // koordinaten funktion für entfernung - ignorieren
-// function distance(lat1,
-//     lat2, lon1, lon2) {
+// koordinaten funktion für entfernung - ignorieren
+function distance() {
+    lat1 = Länder[num].latitude;
+    lon1 = Länder[num].longitude;
+    lat2 = LatEingabe(LänderEingabe.value);
+    lon2 = LonEingabe(LänderEingabe.value);
+    // The math module contains a function
+    // named toRadians which converts from
+    // degrees to radians.
+    lon1 = lon1 * Math.PI / 180;
+    lon2 = lon2 * Math.PI / 180;
+    lat1 = lat1 * Math.PI / 180;
+    lat2 = lat2 * Math.PI / 180;
 
-//     // The math module contains a function
-//     // named toRadians which converts from
-//     // degrees to radians.
-//     lon1 = lon1 * Math.PI / 180;
-//     lon2 = lon2 * Math.PI / 180;
-//     lat1 = lat1 * Math.PI / 180;
-//     lat2 = lat2 * Math.PI / 180;
+    // Haversine formula
+    let dlon = lon2 - lon1;
+    let dlat = lat2 - lat1;
+    let a = Math.pow(Math.sin(dlat / 2), 2) +
+        Math.cos(lat1) * Math.cos(lat2) *
+        Math.pow(Math.sin(dlon / 2), 2);
 
-//     // Haversine formula
-//     let dlon = lon2 - lon1;
-//     let dlat = lat2 - lat1;
-//     let a = Math.pow(Math.sin(dlat / 2), 2) +
-//         Math.cos(lat1) * Math.cos(lat2) *
-//         Math.pow(Math.sin(dlon / 2), 2);
+    let c = 2 * Math.asin(Math.sqrt(a));
 
-//     let c = 2 * Math.asin(Math.sqrt(a));
+    // Radius of earth in kilometers. Use 3956 for miles
+    let r = 6371;
 
-//     // Radius of earth in kilometers. Use 3956
-//     // for miles
-//     let r = 6371;
-
-//     // calculate the result
-//     return (c * r);
-// }
-
-// // Driver code   
-
-// let lat1 = 53.32055555555556;
-// let lat2 = 53.31861111111111;
-// let lon1 = -1.7297222222222221;
-// let lon2 = -1.6997222222222223;
-// document.write(distance(lat1, lat2,
-//     lon1, lon2) + " K.M");
+    // calculate the result
+    return (c * r);
+}

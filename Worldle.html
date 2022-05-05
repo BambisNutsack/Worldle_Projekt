@@ -23,24 +23,24 @@
         <section id="Mainpage" style="position:absolute; top:50px; left:0; width:100%; height:100%; visibility:visible">
             <div class="Hauptseite">
                 <div class="Land">
-                    <img name="canvas" style="width: 300px; height: 300px;" />
+                    <img name="canvas" style="width: 400px; height: 400px;" />
                 </div>
                 <div class="Versuche">
-                    <table id="VersucheTabelle" style="width:300px;">
+                    <table id="VersucheTabelle" style="width:600px;">
                     </table>
                 </div>
                 <div class="Autofill">
                     <form id="Versuchseingabe" onsubmit="TabellenErstellung()">
-                        <input id="LänderEingabe" list="LänderListe" placeholder="Test" style="width: 300px; height: 30px;">
+                        <input id="LänderEingabe" list="LänderListe" placeholder="Test" style="width: 600px; height: 30px;">
                     </form>
                     <datalist id="LänderListe">
                 </datalist>
                 </div>
                 <div id="WeiterButton" class="WeiterButton" style="visibility:hidden">
-                    <button onclick="LandAuswahl(); EingabeLeeren()" style="width:300px; height: 30px;">Zufälliges   Land</button>
+                    <button onclick="LandAuswahl(); EingabeLeeren()" style="width:600px; height: 30px;">Zufälliges   Land</button>
                 </div>
                 <div id="VersuchButton" class="VersuchButton">
-                    <button onclick="TabellenErstellung();" style="width:300px; height: 30px;">Raten</button>
+                    <button onclick="TabellenErstellung();" style="width:600px; height: 30px;">Raten</button>
                 </div>
             </div>
         </section>
