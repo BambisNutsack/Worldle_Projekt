@@ -120,10 +120,10 @@ function Test() {
     OW = lon1 - lon2
 
 
-    N = ((lat1 > lat2 && NS > 1.5) ? "N" : "");
-    S = ((lat1 < lat2 && NS < -1.5) ? "S" : "");
-    O = ((lon1 > lon2 && OW > 1.5) ? "O" : "");
-    W = ((lon1 < lon2 && OW < -1.5) ? "W" : "");
+    N = ((NS > 1.5) ? "N" : "");
+    S = ((NS < -1.5) ? "S" : "");
+    O = ((OW > 1.5) ? "O" : "");
+    W = ((OW < -1.5) ? "W" : "");
     Richtung = N + S + O + W
 
 
