@@ -10,25 +10,30 @@ html {
 }
 
 body {
-    background-color: #fafafa;
+    background-color: #101820FF;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0;
     transition: background 0.1s linear;
+    color: #fafafa;
 }
 
 body.dark {
-    filter: invert(1) hue-rotate(180deg);
-    background-color: rgb(39, 38, 38);
     width: 100%;
     display: inline-block;
+    background-color: rgb(24, 78, 136);
 }
 
 h1 {
-    background-color: rgb(155, 155, 155);
+    /* background-color: rgb(8, 13, 17); */
+    background-color: rgb(4, 14, 22);
     width: 100%;
     position: relative;
+}
+
+.Bild {
+    filter: invert(1) hue-rotate(180deg);
 }
 
 .Hauptseite {
@@ -73,12 +78,21 @@ h1 {
 table {
     padding: 10px;
     display: inline-block;
+    border-spacing: 5px;
+    width: 580px;
 }
 
 td {
+    text-align: center;
+    align-items: center;
+    border-spacing: 30px;
     border: 2px solid #111;
+    border-color: #fafafa;
+    color: #fafafa;
     padding: 5px;
-    width: 500px;
+    font-size: 17px;
+    border-radius: 5px;
+    width: 50%;
 }
 
 .autofill {
@@ -90,9 +104,47 @@ td {
 }
 
 .red {
-    background-color: rgb(255, 120, 120);
+    background-color: #65000b;
 }
 
 .green {
-    background-color: rgb(120, 255, 120);
+    background-color: #006600;
+}
+
+.LänderEingabe {
+    color: #fafafa;
+    background-color: rgb(20, 31, 43);
+    border-color: #fafafa;
+    font-size: 17px;
+    border-radius: 5px;
+}
+
+.WeiterButton {
+    color: #fafafa;
+    background-color: #101820FF;
+    border-color: #fafafa;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.VersuchsButton {
+    color: #fafafa;
+    background-color: rgb(20, 31, 43);
+    border-color: #fafafa;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.Infopage {
+    font-size: 20px;
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Auflösung {
+    padding-bottom: 20px;
+    margin-top: -40px;
+    font-size: 20px;
 }

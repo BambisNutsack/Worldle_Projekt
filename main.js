@@ -7,28 +7,41 @@ chk.addEventListener("change", () => {
 
 
 // infopage     --------------------------------------
+var Info = document.getElementById("Infopage");
+var Main = document.getElementById("Mainpage");
+
 function InfopageToggle() {
-    var Info = document.getElementById("Infopage");
-    var Main = document.getElementById("Mainpage")
-    var infoVisible = Info.style.visibility == "visible"
-    Info.style.visibility = infoVisible ? "hidden" : "visible"
-    Main.style.visibility = infoVisible ? "visible" : "hidden"
-}
+    var infoVisible = Info.style.visibility == "visible";
+    Info.style.visibility = infoVisible ? "hidden" : "visible";
+    Main.style.visibility = infoVisible ? "visible" : "hidden";
+
+    WeiterButton.style.visibility = "hidden"
+    VersuchButton.style.visibility = "hidden"
+    LänderEingabe.style.visibility = "hidden"
+
+
+    if (Info.style.visibility == "hidden" && Erraten == true) {
+        WeiterButton.style.visibility = "visible"
+    } else if (Info.style.visibility == "hidden") {
+        VersuchButton.style.visibility = "visible"
+        LänderEingabe.style.visibility = "visible"
+    }
+};
 
 
 
 // svg array
-var imgArr = []
-var NameArr = []
+var imgArr = [];
+var NameArr = [];
 for (var i = 0; i < Länder.length; i++) {
-    imgArr[i] = Länder[i].code + ".svg"
-    NameArr[i] = Länder[i].name
-}
+    imgArr[i] = Länder[i].code + ".svg";
+    NameArr[i] = Länder[i].name;
+};
 
 
 
 // laden der funktionen 
-window.onload = Autocomplete(), LandAuswahl()
+window.onload = Autocomplete(), LandAuswahl();
 
 
 
@@ -40,41 +53,40 @@ function Autocomplete() {
     for (var i = 0; i < Länder.length; i++) {
         dataList.innerHTML = dataList.innerHTML +
             "<option value='" + Länder[i].name + "'></option>";
-    }
-}
+    };
+};
 
 
 
 // länderauswahl        -------------------------------
-var num
-var WeiterButton = document.getElementById("WeiterButton")
+var num;
+var WeiterButton = document.getElementById("WeiterButton");
 var LänderEingabe = document.getElementById("LänderEingabe");
+var Auflösung = document.getElementById("Auflösung")
 
 function LandAuswahl() {
     num = Math.floor(Math.random() * (imgArr.length));
     document.canvas.src = "img/" + imgArr[num];
+
     while (Länge > 0) {
-        Länge = Länge - 1
+        Länge = Länge - 1;
         document.getElementById("VersucheTabelle").deleteRow(Länge);
-    }
+    };
+
+
     Erraten = false
-    if (WeiterButton) WeiterButton.style.visibility = "hidden"
-    if (VersuchButton) VersuchButton.style.visibility = "visible"
-    if (LänderEingabe) LänderEingabe.style.visibility = "visible"
-}
+    if (WeiterButton) WeiterButton.style.visibility = "hidden";
+    if (VersuchButton) VersuchButton.style.visibility = "visible";
+    if (LänderEingabe) LänderEingabe.style.visibility = "visible";
+    if (Auflösung) Auflösung.innerHTML = ""
+};
 
 
 
 // einfügen der eänder in den table
-var Länge = 0
-var Erraten = false
-var VersuchButton = document.getElementById("VersuchButton")
-var N
-var S
-var O
-var W
-var NS
-var OW
+var Länge = 0;
+var Erraten = false;
+var VersuchButton = document.getElementById("VersuchButton");
 
 function TabellenErstellung() {
     if (Länge < 6 && Erraten == false && NameArr.includes(LänderEingabe.value)) {
@@ -85,21 +97,25 @@ function TabellenErstellung() {
         cell.innerHTML = Versuch.value;
         Länge = tabelle.rows.length;
 
+        if (Länge == 6) {
+            Erraten = true
+            Auflösung.innerHTML = "Es wäre <span style='color:#e5ff00; font-weight: 700;'>" + Länder[num].name + "</span> gewesen!"
+        }
 
         if (Versuch.value == Länder[num].name) {
             Erraten = true;
             row.classList.add("green");
         } else {
             row.classList.add("red");
-        }
+        };
 
 
         cell = row.insertCell();
-        cell.innerHTML = ((distance().toFixed(2) > 0) ? distance().toFixed(2) + " km" : "🎉");
+        cell.innerHTML = ((distance().toFixed(2) > 0) ? distance().toFixed(0) + " km" : "🎉");
 
 
         cell = row.insertCell();
-        cell.innerHTML = Test()
+        cell.innerHTML = HimmelsRichtungErmitteln();
 
 
         WeiterButton.style.visibility = ((Erraten == true || Länge == 6) ? "visible" : "hidden");
@@ -107,24 +123,26 @@ function TabellenErstellung() {
         LänderEingabe.style.visibility = ((Erraten == true || Länge == 6) ? "hidden" : "visible");
         LänderEingabe.value = "";
 
-    }
+    };
 };
 
 
-function Test() {
+
+
+function HimmelsRichtungErmitteln() {
     lat1 = Länder[num].latitude;
     lon1 = Länder[num].longitude;
     lat2 = LatEingabe(LänderEingabe.value);
     lon2 = LonEingabe(LänderEingabe.value);
-    NS = lat1 - lat2
-    OW = lon1 - lon2
+    NS = lat1 - lat2;
+    OW = lon1 - lon2;
 
 
     N = ((NS > 1.5) ? "N" : "");
     S = ((NS < -1.5) ? "S" : "");
     O = ((OW > 1.5) ? "O" : "");
     W = ((OW < -1.5) ? "W" : "");
-    Richtung = N + S + O + W
+    Richtung = N + S + O + W;
 
 
     for (var i = 0; i < Richtungspfeile.length; i++) {
@@ -133,11 +151,8 @@ function Test() {
         }
     }
 
-    return Richtung
-}
-
-
-
+    return Richtung;
+};
 
 
 
@@ -148,7 +163,9 @@ function LatEingabe(a) {
             return (Länder[i].latitude);
         }
     }
-}
+};
+
+
 
 function LonEingabe(a) {
     for (var i = 0; i < Länder.length; i++) {
@@ -156,7 +173,8 @@ function LonEingabe(a) {
             return (Länder[i].longitude);
         }
     }
-}
+};
+
 
 
 // verhindert neuladen der seite bei eingabe
@@ -166,10 +184,12 @@ function handleForm(e) { e.preventDefault(); }
 form.addEventListener("submit", handleForm);
 
 
+
 // leert die ländereingabe
 function EingabeLeeren() {
-    LänderEingabe.value = ""
-}
+    LänderEingabe.value = "";
+};
+
 
 
 // koordinaten funktion für entfernung - ignorieren
@@ -186,6 +206,7 @@ function distance() {
     lat1 = lat1 * Math.PI / 180;
     lat2 = lat2 * Math.PI / 180;
 
+
     // Haversine formula
     let dlon = lon2 - lon1;
     let dlat = lat2 - lat1;
@@ -200,4 +221,4 @@ function distance() {
 
     // calculate the result
     return (c * r);
-}
+};

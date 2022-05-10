@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="Justin Pauli & Bence Szalma">
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="shortcut icon" type="x-icon" href="globe.png">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 </head>
@@ -18,12 +19,13 @@
             <label class="label" for="chk">
                 <i class="bi bi-brightness-high-fill"></i>
             </label>
+            <input type="checkbox" class="checkbox" id="infochk" />
             <i onclick="InfopageToggle();" class="bbi bi-info-circle"></i>
         </h1>
         <section id="Mainpage" style="position:absolute; top:50px; left:0; width:100%; height:100%; visibility:visible">
             <div class="Hauptseite">
-                <div class="Land">
-                    <img name="canvas" style="width: 400px; height: 400px;" />
+                <div>
+                    <img name="canvas" class="Bild" style="width: 400px; height: 400px;" />
                 </div>
                 <div class="Versuche">
                     <table id="VersucheTabelle" style="width:600px;">
@@ -31,25 +33,68 @@
                 </div>
                 <div class="Autofill">
                     <form id="Versuchseingabe" onsubmit="TabellenErstellung()">
-                        <input id="LänderEingabe" list="LänderListe" placeholder="Test" style="width: 600px; height: 30px;">
+                        <input id="LänderEingabe" class="LänderEingabe" list="LänderListe" placeholder="Test" style="width: 570px; height: 35px;">
                     </form>
                     <datalist id="LänderListe">
                 </datalist>
                 </div>
-                <div id="WeiterButton" class="WeiterButton" style="visibility:hidden">
-                    <button onclick="LandAuswahl(); EingabeLeeren()" style="width:600px; height: 30px;">Zufälliges   Land</button>
+                <div class="Auflösung">
+                    <p id="Auflösung">
+                    </p>
                 </div>
-                <div id="VersuchButton" class="VersuchButton">
-                    <button onclick="TabellenErstellung();" style="width:600px; height: 30px;">Raten</button>
+                <div id="WeiterButton" style="visibility:hidden">
+                    <button onclick="LandAuswahl(); EingabeLeeren()" class="WeiterButton" style="width:570px; height: 35px;">Zufälliges   Land</button>
+                </div>
+                <div id="VersuchButton">
+                    <button onclick="TabellenErstellung();" style="width:570px; height: 40px;" class="VersuchsButton">Raten</button>
                 </div>
             </div>
         </section>
-        <section id="Infopage" style="position:absolute; top:100px; left:0; width:100%; height:100%; visibility:hidden">
-            <p>Errate das Land in 6 Anläufen.
-                <br> Jeder Versuch muss ein gültiges Land, Gebiet, ... sein.
-                <br> Nach jedem Versuch erhalten Sie die Entfernung zwischen Ihrem Tipp und dem Zielland.
-                <br> credit für die Bilder: https://github.com/djaiss/mapsicon
-            </p>
+        <section id="Infopage" class="Infopage" style="position:absolute; left:0; width:100%; height:80%; visibility:hidden">
+            <div class="Infoseite">
+                <p>Errate das Land in 6 Anläufen.
+                    <br> Jeder Tipp muss ein gültiges Land, Gebiet, ... sein.
+                    <br> Nach jedem Tipp erhalten Sie die Entfernung und die
+                    <br> Richtung zwischen Ihrem Tipp und dem Zielland.
+                    <br>
+                    <br>
+                    <br style="font-size: 60px;"> Beispiele
+                    <table>
+                        <tr style="background-color: #65000b;">
+                            <td>CHILE</td>
+                            <td>13557km</td>
+                            <td>🡽</td>
+                        </tr>
+                    </table>
+                    <br> Dein Tipp CHILE ist 13557km vom Zielland entfernt,
+                    <br> das Zielland liegt in Nordöstlicher Richtung
+                    <br>
+                    <br>
+                    <table>
+                        <tr style="background-color: #65000b;">
+                            <td>Finnland</td>
+                            <td>3206km</td>
+                            <td>🡾</td>
+                        </tr>
+                    </table>
+                    <br> Dein zweiter Tipp FINNLAND kommt näher!
+                    <br> 3206km entfernt, Richtung Süd-Ost
+                    <br>
+                    <br>
+                    <table>
+                        <tr style="background-color: #006600;">
+                            <td>Lebanon</td>
+                            <td>🎉</td>
+                            <td>🎉</td>
+                        </tr>
+                    </table>
+                    <br> Nächster Tipp: LEBANON, das Land, das es zu erraten gilt!
+                    <br> Herzlichen Glückwunsch! 🎉
+                    <br>
+                    <br>
+                    <br> credit für die Bilder: https://github.com/djaiss/mapsicon
+                </p>
+            </div>
         </section>
         <script src="Länder.js"></script>
         <script src="main.js"></script>
