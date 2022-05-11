@@ -125,7 +125,7 @@ function Länderwahl() {
 
 
 
-
+//Weiterbutton unsichtbar machen & funktion
 WeiterButton.addEventListener("click", () => {
     if (WeiterButton) WeiterButton.style.visibility = "hidden";
     if (VersuchButton) VersuchButton.style.visibility = "visible";
