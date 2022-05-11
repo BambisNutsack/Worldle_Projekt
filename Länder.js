@@ -766,7 +766,7 @@ const Länder = [{
         code: "KG",
         latitude: 41.20438,
         longitude: 74.766098,
-        name: "Kirgisistan ",
+        name: "Kirgisistan",
         continent: "Asien"
     },
     {
