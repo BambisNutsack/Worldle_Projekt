@@ -1,19 +1,16 @@
-// theme        --------------------------------------
-const chk = document.getElementById("chk");
-chk.addEventListener("change", () => {
-    document.body.classList.toggle("dark");
-});
-
-
-
 // infopage     --------------------------------------
 var Info = document.getElementById("Infopage");
 var Main = document.getElementById("Mainpage");
+var Z = 0
+var dataList = document.getElementById("LänderListe");
+var num
+var WeiterButton = document.getElementById("WeiterButton");
 
 function InfopageToggle() {
     var infoVisible = Info.style.visibility == "visible";
     Info.style.visibility = infoVisible ? "hidden" : "visible";
     Main.style.visibility = infoVisible ? "visible" : "hidden";
+
 
     WeiterButton.style.visibility = "hidden"
     VersuchButton.style.visibility = "hidden"
@@ -34,51 +31,193 @@ function InfopageToggle() {
 var imgArr = [];
 var NameArr = [];
 for (var i = 0; i < Länder.length; i++) {
-    imgArr[i] = Länder[i].code + ".svg";
+    imgArr[i] = Länder[i].code
     NameArr[i] = Länder[i].name;
 };
+num = Math.floor(Math.random() * (imgArr.length));
 
 
-
-// laden der funktionen 
-window.onload = Autocomplete(), LandAuswahl();
-
-
-
-// datenlisten optionen     --------------------------------------
-function Autocomplete() {
-    var dataList = document.getElementById("LänderListe");
-    var input = document.getElementById("LänderEingabe");
-    input.placeholder = "Ländername";
+//verschiedene kontinente
+const AfrikaButton = document.getElementById("AfrikaButton");
+AfrikaButton.addEventListener("click", () => {
+    imgArr = [];
+    NameArr = [];
+    Z = 0
     for (var i = 0; i < Länder.length; i++) {
-        dataList.innerHTML = dataList.innerHTML +
-            "<option value='" + Länder[i].name + "'></option>";
+        if (Länder[i].continent == "Afrika") {
+            imgArr[Z] = Länder[i].code
+            NameArr[Z] = Länder[i].name;
+            Z = Z + 1
+        };
+    }
+    document.getElementById('LänderListe').innerHTML = '';
+    num = Math.floor(Math.random() * (imgArr.length));
+    LandAuswahl();
+    Autocomplete()
+});
+
+
+
+const AsienButton = document.getElementById("AsienButton");
+AsienButton.addEventListener("click", () => {
+    imgArr = [];
+    NameArr = [];
+    Z = 0
+    for (var i = 0; i < Länder.length; i++) {
+        if (Länder[i].continent == "Asien") {
+            imgArr[Z] = Länder[i].code
+            NameArr[Z] = Länder[i].name;
+            Z = Z + 1
+        };
+    }
+    document.getElementById('LänderListe').innerHTML = '';
+    num = Math.floor(Math.random() * (imgArr.length));
+    LandAuswahl();
+    Autocomplete();
+});
+
+
+
+const EuropaButton = document.getElementById("EuropaButton");
+EuropaButton.addEventListener("click", () => {
+    imgArr = [];
+    NameArr = [];
+    Z = 0
+    for (var i = 0; i < Länder.length; i++) {
+        if (Länder[i].continent == "Europa") {
+            imgArr[Z] = Länder[i].code
+            NameArr[Z] = Länder[i].name;
+            Z = Z + 1
+        };
+    }
+    document.getElementById('LänderListe').innerHTML = '';
+    num = Math.floor(Math.random() * (imgArr.length));
+    LandAuswahl();
+    Autocomplete();
+});
+
+
+
+const NordamerikaButton = document.getElementById("NordamerikaButton");
+NordamerikaButton.addEventListener("click", () => {
+    imgArr = [];
+    NameArr = [];
+    Z = 0
+    for (var i = 0; i < Länder.length; i++) {
+        if (Länder[i].continent == "Nordamerika") {
+            imgArr[Z] = Länder[i].code
+            NameArr[Z] = Länder[i].name;
+            Z = Z + 1
+        };
+    }
+    document.getElementById('LänderListe').innerHTML = '';
+    num = Math.floor(Math.random() * (imgArr.length));
+    LandAuswahl();
+    Autocomplete();
+});
+
+
+
+const SüdamerikaButton = document.getElementById("SüdamerikaButton");
+SüdamerikaButton.addEventListener("click", () => {
+    imgArr = [];
+    NameArr = [];
+    Z = 0
+    for (var i = 0; i < Länder.length; i++) {
+        if (Länder[i].continent == "Südamerika") {
+            imgArr[Z] = Länder[i].code
+            NameArr[Z] = Länder[i].name;
+            Z = Z + 1
+        };
+    }
+    document.getElementById('LänderListe').innerHTML = '';
+    num = Math.floor(Math.random() * (imgArr.length));
+    LandAuswahl();
+    Autocomplete();
+});
+
+
+
+const OzeanienButton = document.getElementById("OzeanienButton");
+OzeanienButton.addEventListener("click", () => {
+    imgArr = [];
+    NameArr = [];
+    Z = 0
+    for (var i = 0; i < Länder.length; i++) {
+        if (Länder[i].continent == "Ozeanien") {
+            imgArr[Z] = Länder[i].code
+            NameArr[Z] = Länder[i].name;
+            Z = Z + 1
+        };
+    }
+    document.getElementById('LänderListe').innerHTML = '';
+    num = Math.floor(Math.random() * (imgArr.length));
+    LandAuswahl();
+    Autocomplete();
+});
+
+
+
+const WeltweitButton = document.getElementById("WeltweitButton");
+WeltweitButton.addEventListener("click", () => {
+    imgArr = [];
+    NameArr = [];
+    for (var i = 0; i < Länder.length; i++) {
+        imgArr[i] = Länder[i].code
+        NameArr[i] = Länder[i].name;
     };
-};
+    document.getElementById('LänderListe').innerHTML = '';
+    num = Math.floor(Math.random() * (imgArr.length));
+    LandAuswahl();
+    Autocomplete();
+});
+
+
+
+WeiterButton.addEventListener("click", () => {
+    if (WeiterButton) WeiterButton.style.visibility = "hidden";
+    if (VersuchButton) VersuchButton.style.visibility = "visible";
+    if (LänderEingabe) LänderEingabe.style.visibility = "visible";
+    if (Auflösung) Auflösung.innerHTML = "";
+    num = Math.floor(Math.random() * (imgArr.length));
+    LandAuswahl();
+});
+
+
+
+
+
+// laden der wichtigsten funktionen 
+window.onload = Autocomplete(), LandAuswahl();
 
 
 
 // länderauswahl        -------------------------------
 var num;
-var WeiterButton = document.getElementById("WeiterButton");
 var LänderEingabe = document.getElementById("LänderEingabe");
 var Auflösung = document.getElementById("Auflösung")
 
 function LandAuswahl() {
-    num = Math.floor(Math.random() * (imgArr.length));
-    document.canvas.src = "img/" + imgArr[num];
+    document.canvas.src = "img2/Weltweit/" + imgArr[num] + "/vector.svg";
 
     while (Länge > 0) {
         Länge = Länge - 1;
         document.getElementById("VersucheTabelle").deleteRow(Länge);
     };
 
-
     Erraten = false
-    if (WeiterButton) WeiterButton.style.visibility = "hidden";
-    if (VersuchButton) VersuchButton.style.visibility = "visible";
-    if (LänderEingabe) LänderEingabe.style.visibility = "visible";
-    if (Auflösung) Auflösung.innerHTML = ""
+};
+
+
+
+// datenlisten optionen     --------------------------------------
+function Autocomplete() {
+    var input = document.getElementById("LänderEingabe");
+    input.placeholder = "Ländername";
+    for (var i = 0; i < NameArr.length; i++) {
+        dataList.innerHTML = dataList.innerHTML +
+            "<option value='" + NameArr[i] + "'></option>";
+    };
 };
 
 
@@ -102,7 +241,7 @@ function TabellenErstellung() {
             Auflösung.innerHTML = "Es wäre <span style='color:#e5ff00; font-weight: 700;'>" + Länder[num].name + "</span> gewesen!"
         }
 
-        if (Versuch.value == Länder[num].name) {
+        if (Versuch.value == NameArr[num]) {
             Erraten = true;
             row.classList.add("green");
         } else {
@@ -122,16 +261,15 @@ function TabellenErstellung() {
         VersuchButton.style.visibility = ((Erraten == true || Länge == 6) ? "hidden" : "visible");
         LänderEingabe.style.visibility = ((Erraten == true || Länge == 6) ? "hidden" : "visible");
         LänderEingabe.value = "";
-
     };
 };
 
 
 
-
+// ermittelt die richtung zwischen den ländern
 function HimmelsRichtungErmitteln() {
-    lat1 = Länder[num].latitude;
-    lon1 = Länder[num].longitude;
+    lat1 = LatAuswahl();
+    lon1 = LonAuswahl();
     lat2 = LatEingabe(LänderEingabe.value);
     lon2 = LonEingabe(LänderEingabe.value);
     NS = lat1 - lat2;
@@ -156,7 +294,7 @@ function HimmelsRichtungErmitteln() {
 
 
 
-// test zum auslesen der koordinaten
+// auslesen der koordinaten
 function LatEingabe(a) {
     for (var i = 0; i < Länder.length; i++) {
         if (Länder[i].name === a) {
@@ -164,6 +302,15 @@ function LatEingabe(a) {
         }
     }
 };
+
+
+function LatAuswahl() {
+    for (var i = 0; i < Länder.length; i++) {
+        if (Länder[i].name == NameArr[num]) {
+            return (Länder[i].latitude);
+        }
+    }
+}
 
 
 
@@ -174,6 +321,14 @@ function LonEingabe(a) {
         }
     }
 };
+
+function LonAuswahl() {
+    for (var i = 0; i < Länder.length; i++) {
+        if (Länder[i].name == NameArr[num]) {
+            return (Länder[i].longitude);
+        }
+    }
+}
 
 
 
@@ -194,8 +349,8 @@ function EingabeLeeren() {
 
 // koordinaten funktion für entfernung - ignorieren
 function distance() {
-    lat1 = Länder[num].latitude;
-    lon1 = Länder[num].longitude;
+    lat1 = LatAuswahl();
+    lon1 = LonAuswahl();
     lat2 = LatEingabe(LänderEingabe.value);
     lon2 = LonEingabe(LänderEingabe.value);
     // The math module contains a function

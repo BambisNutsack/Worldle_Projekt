@@ -13,16 +13,33 @@
 
 <body>
     <div class="container">
-        <h1 class="header">
-            <i class="bi bi-list"></i>
-            <input type="checkbox" class="checkbox" id="chk" />
-            <label class="label" for="chk">
-                <i class="bi bi-brightness-high-fill"></i>
+        <nav>
+            <a class="logo">W<img src="globe.png" width="32px" height="32px" class="TitelLogo" style="margin-top:5px">rldle</a>
+            <input type="checkbox" id="toggle_button">
+            <label for="toggle_button" class="toggle_button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </label>
-            <input type="checkbox" class="checkbox" id="infochk" />
-            <i onclick="InfopageToggle();" class="bbi bi-info-circle"></i>
-        </h1>
-        <section id="Mainpage" style="position:absolute; top:50px; left:0; width:100%; height:100%; visibility:visible">
+            <ul>
+                <li><a>Schwierigkeit</a></li>
+                <li class="expandable_li">
+                    <input type="checkbox" id="länder_checkbox">
+                    <label for="länder_checkbox">Kontinent</label>
+                    <ul class="dropdown">
+                        <li><button id="AfrikaButton">Afrika</button></li>
+                        <li><button id="AsienButton">Asien</button></li>
+                        <li><button id="EuropaButton">Europa</button></li>
+                        <li><button id="NordamerikaButton">Nordamerika</button></li>
+                        <li><button id="SüdamerikaButton">Südamerika</button></li>
+                        <li><button id="OzeanienButton">Ozeanien</button></li>
+                        <li><button id="WeltweitButton">Weltweit</button></li>
+                    </ul>
+                </li>
+                <li><a onclick="InfopageToggle();">Infos</a></li>
+            </ul>
+        </nav>
+        <section id="Mainpage" style="position:absolute; left:0; width:100%; height:100%; visibility:visible">
             <div class="Hauptseite">
                 <div>
                     <img name="canvas" class="Bild" style="width: 400px; height: 400px;" />
@@ -43,16 +60,17 @@
                     </p>
                 </div>
                 <div id="WeiterButton" style="visibility:hidden">
-                    <button onclick="LandAuswahl(); EingabeLeeren()" class="WeiterButton" style="width:570px; height: 35px;">Zufälliges   Land</button>
+                    <button onclick="LandAuswahl(); EingabeLeeren();" class="WeiterButton" style="width:570px; height: 35px;">Zufälliges   Land</button>
                 </div>
                 <div id="VersuchButton">
                     <button onclick="TabellenErstellung();" style="width:570px; height: 40px;" class="VersuchsButton">Raten</button>
                 </div>
             </div>
         </section>
-        <section id="Infopage" class="Infopage" style="position:absolute; left:0; width:100%; height:80%; visibility:hidden">
+        <section id="Infopage" class="Infopage" style="position:absolute; left:0; width:100%; visibility:hidden">
             <div class="Infoseite">
-                <p>Errate das Land in 6 Anläufen.
+                <p>
+                    <br>Errate das Land in 6 Anläufen.
                     <br> Jeder Tipp muss ein gültiges Land, Gebiet, ... sein.
                     <br> Nach jedem Tipp erhalten Sie die Entfernung und die
                     <br> Richtung zwischen Ihrem Tipp und dem Zielland.
