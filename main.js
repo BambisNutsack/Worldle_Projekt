@@ -238,7 +238,7 @@ function TabellenErstellung() {
 
         if (Länge == 6) {
             Erraten = true
-            Auflösung.innerHTML = "Es wäre <span style='color:#e5ff00; font-weight: 700;'>" + Länder[num].name + "</span> gewesen!"
+            Auflösung.innerHTML = "Es wäre <span style='color:#e5ff00; font-weight: 700;'>" + NameArr[num] + "</span> gewesen!"
         }
 
         if (Versuch.value == NameArr[num]) {
